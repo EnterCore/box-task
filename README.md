@@ -1,3 +1,13 @@
+# Aims of the task:
+
+&bull; Presets for the app mode(json file) had to be fetched using given endpoint. It had to be request to a server.<br>
+&bull; The file contains name of a mode and size of the grid. The grid had to be squared form.<br>
+&bull; User can pick a mode.<br>
+&bull; After "start" button is pressed, if user hovers a cell of the grid, the cell's color turns blue.<br>
+&bull; If user hovers a cell which is already blue, it turns back to it's original color (white).<br>
+&bull; Highlighted cells should be seen beside the grid in form of a list with respective cell's coordinates.<br>
+&bull; Design, animations and any addiotanal features was optional and not required. So I made the rest according to my own view.<br>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
