@@ -1,0 +1,19 @@
+.gridContainer{
+  display: grid;
+  width: 500px;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+
+}
+
+.cell {
+  width: 100%;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+
+  &::after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+}

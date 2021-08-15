@@ -8,19 +8,20 @@ import Grid from '../Grid/Grid';
 import ActiveCellsList from '../ActiveCells/ActiveCellsList';
 
 
-function Main (props) {
+function Main ({mods}) {
   const [activeMode, setActiveMode] = useState(null);
   const [isModeStarted, setIsModeStarted] = useState(false);
   const [activeCells, setActiveCells] = useState({});
   const [isDroped, setISDroped] = useState(false);
-  const mods = props;
+  
 
   const changeCells = (rowId, cellId) => {
-    if(!isModeStarted) return;
+    if (!isModeStarted) return;
 
-    setActiveCells({
+    setActiveCells((activeCells) => ({
+        ...activeCells,
       [`${rowId}-${cellId}`]: activeCells[`${rowId}-${cellId}`] ? null : `row ${rowId} - col ${cellId}`
-    });
+    }));
   }
 
   const changeMode = (currMode) => {
@@ -29,7 +30,7 @@ function Main (props) {
   }
 
   const renderOptions = () => {
-    return Object.values(mods).map((currMode, index) => (
+    return mods.map((currMode, index) => (
       <div className={styles.option} key={index} onClick={() => changeMode(currMode)}>
         {currMode.modeName}
       </div>
@@ -40,11 +41,12 @@ function Main (props) {
     setISDroped(!isDroped);
   }
 
-  const startBtn = () =>{
-    if(!activeMode) return;
+  const startBtn = () => {
+    if (!activeMode) return;
 
-    setIsModeStarted(!isModeStarted);
+    setIsModeStarted(prevState => !prevState);
   }
+
   return (
     <div className={styles.container}>
       <div className={styles.gridContainer}>
@@ -68,8 +70,7 @@ function Main (props) {
             type="button"
             className={cx(
               styles.startBtn,
-              { [styles.startBtnDisabled]: !activeMode,
-                [styles.startBtnActive]: isModeStarted}
+              { [styles.startBtnActive]: isModeStarted}
             )}
             onClick={() => startBtn()}
           >
@@ -78,9 +79,9 @@ function Main (props) {
         </div>
         { activeMode &&
           <Grid
-              activeMode={activeMode}
-              activeCells={activeCells}
-              changeCellState={changeCells()}
+            activeMode={activeMode}
+            activeCells={activeCells}
+            changeCellState={changeCells}
           />
         }
       </div>

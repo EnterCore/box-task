@@ -1,11 +1,20 @@
-.App {
-
+.app {
+  height: 100vh;
 }
 
-.error {
-
+.error,
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  line-height: 40px;
 }
 
 .loader {
+  padding-top: 200px;
+}
 
+.error {
+  color: red;
 }

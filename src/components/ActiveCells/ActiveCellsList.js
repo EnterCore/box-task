@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './ActiveCellsList.module.scss';
 
-function ActiveCellsList(props) {
-  const activeCells = props;
+function ActiveCellsList({activeCells}) {
   
   const renderList = () => {
     return Object.values(activeCells).map((currElem, index) => (
+      currElem &&
       <li key={index} className={styles.listItem}>
         {currElem}
       </li>
